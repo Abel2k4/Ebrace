@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mental Health Tracker</title>
+  <link rel="icon" type="image/jpg" href="ebrace2.0-removebg-preview.png">
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .survey-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 20px;
+      border: 2px solid #333;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .survey-button:hover {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="surveyContainer">
+    <h1>Adiction test</h1>
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <br>
+    <br>
+    <p>The Addiction Test is for people who are concerned about their use of alcohol or drugs. The questions focus on lifetime alcohol and drug use.</p>
+    <br>
+    <p>Please note: All fields are required. When thinking about drug use, include illegal drug use and the use of prescription drugs other than as prescribed.
+    </p>
+    <hr>
+    <br>
+    <form id="anxietysurvey">
+      <label>1.Do you ever use drugs for something other than a medical reason?*</label>
+      <br>
+      <br>
+
+      <select id="q1">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+        
+      </select>
+    <br>
+    <br>
+    <br>
+     
+    <label>2.Have people annoyed you by criticizing your drinking or drug use?</label>
+    <br>
+    <br>
+
+    <select id="q2">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+      <br>
+      <br>
+      <br>
+
+    <label>3.Have you ever had a drink or used drugs first thing in the morning to steady your nerves or to get rid of a hangover?</label>
+    <br>
+    <br>
+
+    <select id="q3">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+      <br>
+      <br>
+      <br>
+  
+  
+      <label>4. Have you ever felt that you ought to cut down on your drinking or drug use?</label>
+      <br>
+      <br>
+
+    <select id="q4">
+      <option value="1">No</option>
+      <option value="0">Yes</option>
+      
+    </select>
+      <br>
+      <br>
+      <br>
+  
+      <label>5.Have you attempted to quit your drug use but been unsuccessful?</label>
+      <br>
+      <br>
+
+    <select id="q5">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+      <br>
+      <br>
+      <br>
+    <label>6.Has your drug use resulted in problems between you and your family members or friends?</label>
+      <br>
+      <br>
+
+    <select id="q6">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+    <br>
+    <br>
+    <br>
+    <label>7.Do you participate in illegal activities in order to get your drugs of choice?</label>
+      <br>
+      <br>
+
+    <select id="q7">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+    <br>
+    <br>
+    <br>
+    <label>8.When you stop taking your drug, do you experience any withdrawal symptoms or feel sick?</label>
+      <br>
+      <br>
+
+    <select id="q8">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+    <br>
+    <br>
+    <br>
+    <label>9.Have you ever had medical problems such as memory loss, hepatitis, convulsions, bleeding, etc. as a result of your drug use?</label>
+      <br>
+      <br>
+
+    <select id="q9">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+    <br>
+    <br>
+    <br>
+    <label>10.Has your drug use ever resulted in blackouts?</label>
+      <br>
+      <br>
+
+    <select id="q10">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+    <br>
+    <br>
+    <button type="button" onclick="calculateResults()">Submit</button>
+</form>
+</div>
+
+  <div class="container" id="resultsContainer" style="display: none;">
+    <img src="ebrace2.0-removebg-preview.png"  
+    height="100"
+    width="100">
+    <h2>Survey Results</h2>
+    <p>Your total score is: <span id="totalScore"></span></p>
+    <p id="resultStatement"></p>
+    <br>
+    <br>
+    <a href="abu.html" class="survey-button">Back to HOME</a>
+
+  </div>
+
+  <script>
+    function calculateResults() {
+      var q1 = parseInt(document.getElementById("q1").value);
+      var q2 = parseInt(document.getElementById("q2").value);
+      var q3 = parseInt(document.getElementById("q3").value);
+      var q4 = parseInt(document.getElementById("q4").value);
+      var q5 = parseInt(document.getElementById("q5").value);
+      var q6 = parseInt(document.getElementById("q6").value);
+      var q7 = parseInt(document.getElementById("q7").value);
+      var q8 = parseInt(document.getElementById("q8").value);
+      var q9 = parseInt(document.getElementById("q9").value);
+      var q10 = parseInt(document.getElementById("q10").value);
+      var totalScore = q1 + q2 + q3 + q4 + q5 + q6 + q7 + q8 + q9 + q10;
+
+      document.getElementById("surveyContainer").style.display = "none";
+      document.getElementById("resultsContainer").style.display = "block";
+      document.getElementById("totalScore").innerText = totalScore;
+
+      var resultStatement = '';
+      if (totalScore <= 2) {
+        resultStatement = "You seem to be doing well!";
+      } else if (totalScore <= 6) {
+        resultStatement = "Your drug use is likely a problem or in the process of becoming a problem. You should consider getting help before your substance abuse becomes overwhelming.";
+      } else {
+        resultStatement = "Your drug use has likely already caused problems in your life. You should seek professional help before your substance abuse and becomes even tougher to overcome.";
+      }
+      document.getElementById("resultStatement").innerText = resultStatement;
+    }
+  </script>
+</body>
+</html>

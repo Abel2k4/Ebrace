@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mental Health Tracker</title>
+  <link rel="icon" type="image/jpg" href="ebrace2.0-removebg-preview.png">
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .survey-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 20px;
+      border: 2px solid #333;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .survey-button:hover {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="surveyContainer">
+    <h1>PTSD survey</h1>
+    <br>
+    <hr>
+    <hr>
+    <br>
+    <p>Sometimes things happen to people that are unusually or especially frightening, - horrible, or traumatic. For example:</p>
+    <pre style="text-align: left; font-family: Papyrus, fantasy; font-size: 25px;">
+        - a serious accident or fire
+        - a physical or sexual assault or abuse
+        - an earthquake or flood
+        - a war
+        - seeing someone be killed or seriously injured
+        - having a loved one die through homicide or suicide.
+
+      Have you ever experienced this kind of event?
+
+      If YES - please answer the questions below.
+
+      In the past month, have you....
+    </pre>
+    <hr>
+    <form id="anxietysurvey">
+      <label>1. had nightmares about the event(s) or thought about the event(s) when you did not want to?</label>
+      <br>
+      <br>
+
+      <select id="q1">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+        
+      </select>
+    <br>
+    <br>
+    <br>
+     
+    <label>2. tried hard not to think about the event(s) or went out of your way to avoid situations that reminded you of the event(s)?</label>
+    <br>
+    <br>
+
+    <select id="q2">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+      <br>
+      <br>
+      <br>
+
+    <label>3. been constantly on guard, watchful, or easily startled?</label>
+    <br>
+    <br>
+
+    <select id="q3">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+      <br>
+      <br>
+      <br>
+  
+  
+      <label>4. felt numb or detached from people, activities, or your surroundings?</label>
+      <br>
+      <br>
+
+    <select id="q4">
+      <option value="1">No</option>
+      <option value="0">Yes</option>
+      
+    </select>
+      <br>
+      <br>
+      <br>
+  
+      <label>5. felt guilty or unable to stop blaming yourself or others for the event(s) or any problems the event(s) may have caused?</label>
+      <br>
+      <br>
+
+    <select id="q5">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+      
+    </select>
+      <br>
+      <br>
+      <button type="button" onclick="calculateResults()">Submit</button>
+</form>
+</div>
+
+  <div class="container" id="resultsContainer" style="display: none;">
+    <img src="ebrace2.0-removebg-preview.png"  
+    height="100"
+    width="100">
+    <h2>Survey Results</h2>
+    <p>Your total score is: <span id="totalScore"></span></p>
+    <p id="resultStatement"></p>
+    <br>
+    <br>
+    <a href="abu.html" class="survey-button">Back to HOME</a>
+
+  </div>
+
+  <script>
+    function calculateResults() {
+      var q1 = parseInt(document.getElementById("q1").value);
+      var q2 = parseInt(document.getElementById("q2").value);
+      var q3 = parseInt(document.getElementById("q3").value);
+      var q4 = parseInt(document.getElementById("q4").value);
+      var q5 = parseInt(document.getElementById("q5").value);
+      
+      var totalScore = q1 + q2 + q3 + q4 + q5;
+
+      document.getElementById("surveyContainer").style.display = "none";
+      document.getElementById("resultsContainer").style.display = "block";
+      document.getElementById("totalScore").innerText = totalScore;
+
+      var resultStatement = '';
+      if (totalScore <= 2) {
+        resultStatement = "People who've scored similarly to you on this quiz for post-traumatic stress disorder (PTSD) rarely qualify for a diagnosis of PTSD.";
+      } else if (totalScore <= 6) {
+        resultStatement = "People who've scored similarly to you on this quiz for post-traumatic stress disorder (PTSD) may sometimes qualify for the diagnosis of PTSD.";
+      } else {
+        resultStatement = "People who've scored similarly to you on this quiz for post-traumatic stress disorder (PTSD) often qualify for the diagnosis of PTSD.";
+      }
+      document.getElementById("resultStatement").innerText = resultStatement;
+    }
+  </script>
+</body>
+</html>

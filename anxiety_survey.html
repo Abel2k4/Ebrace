@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mental Health Tracker</title>
+  <link rel="icon" type="image/jpg" href="ebrace2.0-removebg-preview.png">
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .survey-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 20px;
+      border: 2px solid #333;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .survey-button:hover {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="surveyContainer">
+    <h1>Anxiety survey</h1>
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <br>
+    <br>
+    <p>Over the last 2 weeks, how often have you been bothered by any of the following problems?</p>
+    <br>
+    <p>Please note, all fields are required.
+    </p>
+    <hr>
+    <br>
+    <form id="anxietysurvey">
+      <label>1. How often have you been feeling nervous, anxious, or on edge</label>
+      <br>
+      <br>
+
+      <select id="q1">
+        <option value="0">Not at all</option>
+        <option value="1">Several days</option>
+        <option value="2">More than half the days</option>
+        <option value="3">Nearly every day</option>
+      </select>
+    <br>
+    <br>
+    <br>
+     
+      <label>2. How often have you not been able to stop or control worrying</label>
+      <br>
+      <br>
+      <select id="q2">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+      <br>
+      <br>
+      <br>
+
+      <label>3. How often have you been so restless that it is hard to sit still</label>
+      <br>
+      <br>
+      <select id="q3">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+      <br>
+      <br>
+      <br>
+  
+  
+      <label>4. How often have you been feeling afraid, as if something awful might happen</label>
+      <br>
+      <br>
+      <select id="q4">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+      <br>
+      <br>
+      <br>
+  
+      <label>5. How often have you been  becoming easily annoyed or irritable</label>
+      <br>
+      <br>
+      <select id="q5">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+      <br>
+      <br>
+      <label>6.Do you often experience physical symptoms such as restlessness, tension, or difficulty sleeping when anxious?
+      </label>
+      <br>
+      <br>
+
+      <select id="q6">
+        <option value="0">Not at all</option>
+        <option value="1">Several days</option>
+        <option value="2">More than half the days</option>
+        <option value="3">Nearly every day</option>
+      </select>
+    <br>
+    <br>
+    <br>
+     
+      <label>7. Have you noticed any patterns in your anxiety, such as certain times of day or specific events that consistently trigger it?
+      </label>
+      <br>
+      <br>
+      <select id="q7">
+          <option value="0">no</option>
+          <option value="1">yes</option>
+          
+      </select>
+      <br>
+      <br>
+      <br>
+
+      <label>8.  How would you describe your overall level of self-confidence in managing challenging situations?
+      </label>
+      <br>
+      <br>
+      <select id="q8">
+          <option value="0">good</option>
+          <option value="1">average</option>
+          <option value="2">not that good</option>
+          <option value="3">bad</option>
+      </select>
+      <br>
+      <br>
+      <br>
+  
+  
+      <label>9.Have you sought professional help or implemented any strategies to manage your anxiety?</label>
+      <br>
+      <br>
+      <select id="q9">
+          <option value="0">yes</option>
+          <option value="1">no</option>
+      </select>
+      <br>
+      <br>
+      <br>
+  
+      <label>10. How often do you find yourself worrying about things that are beyond your control?</label>
+      <br>
+      <br>
+      <select id="q10">
+          <option value="0">Not at all</option>
+          <option value="1">Several days</option>
+          <option value="2">More than half the days</option>
+          <option value="3">Nearly every day</option>
+      </select>
+    <br>
+    <br>
+      <button type="button" onclick="calculateResults()">Submit</button>
+    </form>
+  </div>
+
+  <div class="container" id="resultsContainer" style="display: none;">
+    <h2>Survey Results</h2>
+    <p>Your total score is: <span id="totalScore"></span></p>
+    <p id="resultStatement"></p>
+    <br>
+    <br>
+    <a href="abu.html" class="survey-button">Back to HOME</a>
+
+  </div>
+
+  <script>
+    function calculateResults() {
+      var q1 = parseInt(document.getElementById("q1").value);
+      var q2 = parseInt(document.getElementById("q2").value);
+      var q3 = parseInt(document.getElementById("q3").value);
+      var q4 = parseInt(document.getElementById("q4").value);
+      var q5 = parseInt(document.getElementById("q5").value);
+      var q6 = parseInt(document.getElementById("q6").value);
+      var q7 = parseInt(document.getElementById("q7").value);
+      var q8 = parseInt(document.getElementById("q8").value);
+      var q9 = parseInt(document.getElementById("q9").value);
+      var q10 = parseInt(document.getElementById("q10").value);
+      var totalScore = q1 + q2 + q3 + q4 + q5 + q6 + q7 + q8 + q9 + q10;
+
+      document.getElementById("surveyContainer").style.display = "none";
+      document.getElementById("resultsContainer").style.display = "block";
+      document.getElementById("totalScore").innerText = totalScore;
+
+      var resultStatement = '';
+      if (totalScore <= 8) {
+        resultStatement = "These results indicate that you are unlikely to have an anxiety disorder";
+      } else if (totalScore <= 16) {
+        resultStatement = "These results indicate that you may be suffering from an anxiety disorder.";
+      } else {
+        resultStatement = "These results indicate that you are most likely suffering from anxiety disorder .Consider seeking professional help .";
+      }
+      document.getElementById("resultStatement").innerText = resultStatement;
+    }
+  </script>
+</body>
+</html>
